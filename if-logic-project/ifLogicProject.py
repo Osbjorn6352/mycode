@@ -14,21 +14,18 @@ class MazeBlock:
     def __str__(self):
         return f"To the north you see a {self.north.roomType}. To the south you see a {self.south.roomType}. To the east you see a {self.east.roomType}. To the west you see a {self.west.roomType}."
 
-gramr = False
-skadisBuckler = False
-
 start = MazeBlock()
 
 hintOfLight0 = MazeBlock("hint of light") # Hints of light indicate proximity to brighter rooms
 hintOfLight1 = MazeBlock("hint of light") 
 hintOfLight2 = MazeBlock("hint of light")
 
-brighterLight0 = MazeBlock() # Brighter rooms indicate proximity to well-lit rooms
-brighterLight1 = MazeBlock() # Rooms 1 and 2 should indicate heat being sensed from dragonfire
-brighterLight2 = MazeBlock()
+brighterLight0 = MazeBlock("brighter light") # Brighter rooms indicate proximity to well-lit rooms
+brighterLight1 = MazeBlock("brighter light") # Rooms 1 and 2 should indicate heat being sensed from dragonfire
+brighterLight2 = MazeBlock("brighter light")
 
-wellLitRoom0 = MazeBlock() # This room is illuminated by dragonfire. Players will have a better chance of slaying the dragon if they've collected gramr and/or Skadi's buckler
-wellLitRoom1 = MazeBlock() # This room is right next to the exit, and is the room following the dragon's chamber.
+wellLitRoom0 = MazeBlock("well lit room") # This room is illuminated by dragonfire. Players will have a better chance of slaying the dragon if they've collected gramr and/or Skadi's buckler
+wellLitRoom1 = MazeBlock("well lit room") # This room is right next to the exit, and is the room following the dragon's chamber.
 
 # Dark rooms are the basic room types
 darkRoom0 = MazeBlock()
@@ -47,15 +44,16 @@ colderRoom = MazeBlock()
 lessColdRoom = MazeBlock()
 
 # This should trigger the collection of Skadi's buckler
-bucklerRoom = MazeBlock()
+bucklerRoom = MazeBlock("room covered in ice")
 
 goldenRoom = MazeBlock("corridor of intricate carved wood")
 
 # This should trigger the collection of the sword, Gramr
-gramrRoom = MazeBlock()
+gramrRoom = MazeBlock("room which appears to be an ancient crypt")
 
-wall = MazeBlock()
-wall.roomType = "wall"
+wall = MazeBlock("wall")
+
+exitRoom = MazeBlock("a stream of sunlight pouring in")
 
 #start
 start.north = hintOfLight0
@@ -117,13 +115,96 @@ deadEndRoom.east = wall
 deadEndRoom.south = wall
 deadEndRoom.west = darkRoom6
 
+#Intricate wooden corridor
+goldenRoom.north = wall
+goldenRoom.east = darkRoom7
+goldenRoom.south = wall
+goldenRoom.west = gramrRoom
 
+#Gramr Room
+gramrRoom.north = wall
+gramrRoom.east = goldenRoom
+gramrRoom.west = wall
+gramrRoom.south = wall
 
+#Cold Room
+coldRoom.north = darkRoom1
+coldRoom.east = wall
+coldRoom.south = colderRoom
+coldRoom.west = wall
 
+#Colder Room
+colderRoom.north = coldRoom
+colderRoom.east = bucklerRoom
+colderRoom.south = wall
+colderRoom.west = lessColdRoom
+
+#Less Cold Room
+lessColdRoom.north = wall
+lessColdRoom.east = colderRoom
+lessColdRoom.south = wall
+lessColdRoom.west = wall
+
+#Buckler room
+bucklerRoom.north = wall
+bucklerRoom.east = wall
+bucklerRoom.south = wall
+bucklerRoom.west = colderRoom
+
+#Hint of light room 0
+hintOfLight0.north = hintOfLight2
+hintOfLight0.east = hintOfLight1
+hintOfLight0.south = start
+hintOfLight0.west = wall
+
+#Hint of light room 1
+hintOfLight1.north = brighterLight0
+hintOfLight1.east = wall
+hintOfLight1.south = wall
+hintOfLight1.west = hintOfLight0
+
+#Hint of light room 2
+hintOfLight2.north = wall
+hintOfLight2.east = brighterLight0
+hintOfLight2.south = hintOfLight0
+hintOfLight2.west = darkRoom7
+
+#Brighter light room 0
+brighterLight0.north = brighterLight1
+brighterLight0.east = brighterLight2
+brighterLight0.south = hintOfLight1
+brighterLight0.west = hintOfLight2
+
+#Brighter light room 1
+brighterLight1.north = wall
+brighterLight1.east = wellLitRoom0
+brighterLight1.south = brighterLight0
+brighterLight1.west = wall
+
+#Brighter light room 2
+brighterLight2.north = wellLitRoom0
+brighterLight2.east = wall
+brighterLight2.south = wall
+brighterLight2.west = brighterLight0
+
+#Dragon room
+wellLitRoom0.north = wellLitRoom1
+wellLitRoom0.east = wall
+wellLitRoom0.south = brighterLight2
+wellLitRoom0.west = brighterLight1
+
+#Exit Room
+wellLitRoom1.north = exitRoom
+wellLitRoom1.east = wall
+wellLitRoom1.south = wellLitRoom0
+wellLitRoom1.west = wall
+
+#START GAME
 location = start
-print(hintOfLight0.roomType)
+gramr = False
+skadisBuckler = False
 
-while location.roomType != "exit":
+while location != exitRoom:
     print(location)
     direction = input("Will you go north, south, east, or west?\n> ").lower()
     
