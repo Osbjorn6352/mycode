@@ -27,5 +27,7 @@ if choice == "Powers":
 elif choice == "Education":
     print(f"Hellen Keller's {choice} was at {hellenkeller[choice]}.")
 
+elif choice == "Occupation":
+    print(f"Hellen Keller's {choice}s inlcuded: {hellenkeller[choice]}. Bet you haven't even done half of that.")
 else:
     print(f"Hellen Keller's {choice} is an impressive {hellenkeller[choice]}.")
