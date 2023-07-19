@@ -21,6 +21,30 @@ darkRoom2 = MazeBlock()
 wall0 = MazeBlock()
 wall0.roomType = "wall"
 
+wall1 = MazeBlock()
+wall1.roomType = "wall"
+
+wall2 = MazeBlock()
+wall2.roomType = "wall"
+
+wall3 = MazeBlock()
+wall3.roomType = "wall"
+
+wall4 = MazeBlock()
+wall4.roomType = "wall"
+
+wall5 = MazeBlock()
+wall5.roomType = "wall"
+
+wall6 = MazeBlock()
+wall6.roomType = "wall"
+
+wall7 = MazeBlock()
+wall7.roomType = "wall"
+
+wall8 = MazeBlock()
+wall8.roomType = "wall"
+
 start.north = darkRoom0
 start.east = darkRoom1
 start.south = darkRoom2
@@ -29,6 +53,9 @@ start.west = wall0
 location = start
 darkRoom0.roomType = "exit"
 darkRoom1.west = start
+darkRoom1.east = wall1
+darkRoom1.south = wall2
+darkRoom1.north = wall3
 
 while location.roomType != "exit":
     print(location)
