@@ -51,7 +51,9 @@ start.south = darkRoom2
 start.west = wall0
 
 location = start
-darkRoom0.roomType = "exit"
+darkRoom0.roomType = "hint of light"
+darkRoom0.south = start
+darkRoom0.east = 
 darkRoom1.west = start
 darkRoom1.east = wall1
 darkRoom1.south = wall2
