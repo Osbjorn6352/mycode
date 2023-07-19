@@ -20,8 +20,8 @@ skadisBuckler = False
 start = MazeBlock()
 
 hintOfLight0 = MazeBlock("hint of light") # Hints of light indicate proximity to brighter rooms
-hintOfLight1 = MazeBlock() 
-hintOfLight2 = MazeBlock()
+hintOfLight1 = MazeBlock("hint of light") 
+hintOfLight2 = MazeBlock("hint of light")
 
 brighterLight0 = MazeBlock() # Brighter rooms indicate proximity to well-lit rooms
 brighterLight1 = MazeBlock() # Rooms 1 and 2 should indicate heat being sensed from dragonfire
@@ -39,24 +39,88 @@ darkRoom4 = MazeBlock()
 darkRoom5 = MazeBlock()
 darkRoom6 = MazeBlock()
 darkRoom7 = MazeBlock()
+deadEndRoom = MazeBlock()
+
+# Dark rooms that indicate proximity to Skadi's Buckler
+coldRoom = MazeBlock()
+colderRoom = MazeBlock()
+lessColdRoom = MazeBlock()
+
+# This should trigger the collection of Skadi's buckler
+bucklerRoom = MazeBlock()
+
+goldenRoom = MazeBlock("corridor of intricate carved wood")
+
+# This should trigger the collection of the sword, Gramr
+gramrRoom = MazeBlock()
 
 wall = MazeBlock()
 wall.roomType = "wall"
 
+#start
 start.north = hintOfLight0
 start.east = darkRoom0
 start.south = darkRoom1
 start.west = wall
 
-location = start
-hintOfLight0.roomType = "hint of light"
-hintOfLight0.south = start
-hintOfLight0.east = hintOfLight1
-darkRoom0.west = start
-darkRoom0.east = wall
-darkRoom0.south = wall
+#dark0
 darkRoom0.north = wall
+darkRoom0.east = darkRoom2
+darkRoom0.south = wall
+darkRoom0.west = start
 
+#dark1
+darkRoom1.north = start
+darkRoom1.south = coldRoom
+darkRoom1.east = wall
+darkRoom1.west = wall
+
+#dark2
+darkRoom2.north = darkRoom3
+darkRoom2.east = darkRoom4
+darkRoom2.south = darkRoom5
+darkRoom2.west = darkRoom0
+
+#dark3 - also a dead end
+darkRoom3.north = wall
+darkRoom3.west = wall
+darkRoom3.east = wall
+darkRoom3.south = darkRoom2
+
+#dark4 - also a dead end
+darkRoom4.north = wall
+darkRoom4.east = wall
+darkRoom4.south = wall
+darkRoom4.west = darkRoom2
+
+#dark5 
+darkRoom5.north = darkRoom2
+darkRoom5.east = wall
+darkRoom5.south = darkRoom6
+darkRoom5.west = wall
+
+#dark6
+darkRoom6.north = darkRoom5
+darkRoom6.east = deadEndRoom
+darkRoom6.south = wall
+darkRoom6.west = wall
+
+#dark7
+darkRoom7.north = wall
+darkRoom7.east = hintOfLight2
+darkRoom7.south = wall
+darkRoom7.west = goldenRoom
+
+#Dead End Room
+deadEndRoom.north = wall
+deadEndRoom.east = wall
+deadEndRoom.south = wall
+deadEndRoom.west = darkRoom6
+
+
+
+
+location = start
 print(hintOfLight0.roomType)
 
 while location.roomType != "exit":
