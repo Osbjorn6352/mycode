@@ -59,10 +59,10 @@ darkRoom1.north = wall3
 
 while location.roomType != "exit":
     print(location)
-    direction = input("Will you go north, south, east, or west?\n> ")
+    direction = input("Will you go north, south, east, or west?\n> ").lower()
     
     while direction not in ["north", "south", "east", "west"]:
-        print("Invalid direction. Please try again.\n> ")
+        direction = input("Invalid direction. Please try again.\n\n Will you go north, south, east, or west\n> ").lower()
     
     if direction == "east" and location.east.roomType != "wall":
         location = location.east
