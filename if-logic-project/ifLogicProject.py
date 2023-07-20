@@ -20,9 +20,9 @@ hintOfLight0 = MazeBlock("hint of light") # Hints of light indicate proximity to
 hintOfLight1 = MazeBlock("hint of light") 
 hintOfLight2 = MazeBlock("hint of light")
 
-brighterLight0 = MazeBlock("brighter light") # Brighter rooms indicate proximity to well-lit rooms
-brighterLight1 = MazeBlock("brighter light") # Rooms 1 and 2 should indicate heat being sensed from dragonfire
-brighterLight2 = MazeBlock("brighter light")
+brighterLight0 = MazeBlock("glow of light") # Brighter rooms indicate proximity to well-lit rooms
+brighterLight1 = MazeBlock("glow of light") # Rooms 1 and 2 should indicate heat being sensed from dragonfire
+brighterLight2 = MazeBlock("glow of light")
 
 wellLitRoom0 = MazeBlock("well lit room") # This room is illuminated by dragonfire. Players will have a better chance of slaying the dragon if they've collected gramr and/or Skadi's buckler
 wellLitRoom1 = MazeBlock("well lit room") # This room is right next to the exit, and is the room following the dragon's chamber.
