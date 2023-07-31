@@ -56,6 +56,7 @@ def setcookie():
     if request.method == "GET": # if the user sends a GET
         return redirect(url_for("index")) # redirect to index
 
+
 # check users cookie for their name
 @app.route("/getcookie")
 def getcookie():
