@@ -25,5 +25,5 @@ def main():
 
     print(zodiacStrings[usrKey])
 
-
-main()
+if __name__ == '__main__':
+    main()
