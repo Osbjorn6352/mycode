@@ -1,0 +1,66 @@
+<html>
+    <style>
+        body {
+            color: rgb(139, 230, 3);
+            background-color: rgba(60, 60, 60);
+        }
+
+        table {
+            border-collapse: collapse;
+        }
+
+        th, td {
+            border: 2px solid rgb(165, 165, 165);
+            padding: 8px;
+        }
+                    /* Define CSS classes for highlighting */
+        .highlight {
+            background-color: yellow;
+        }
+
+        .highlight-name {
+            color: blue;
+        }
+
+        .highlight-email {
+            color: green;
+        }
+    </style>
+            <script>
+                // Get all the table cells with class "highlightable"
+                var highlightCells = document.querySelectorAll('.highlightable');
+    
+                // Loop through each cell and attach event listeners
+                highlightCells.forEach(function(cell) {
+                    cell.addEventListener('mouseover', function() {
+                        this.classList.add('highlight');
+                        this.innerHTML = this.innerHTML
+                            .replace(/(\w+)/g, '<span class="highlight-name">$1</span>');
+                    });
+    
+                    cell.addEventListener('mouseout', function() {
+                        this.classList.remove('highlight');
+                        this.innerHTML = this.innerHTML
+                            .replace(/<span class="highlight-name">(.*?)<\/span>/g, '$1');
+                    });
+                });
+            </script>
+    <head>
+        <title>Front-end Practice Project</title>
+    </head>
+    <body>
+        <h1>DevOps Mock Email List</h1>
+        <table style="color: rgb(165, 165, 165)">
+            <tr>
+                <th>Name</th>
+                <th>Email</th>
+            </tr>
+            {% for entry in email_list %}
+            <tr>
+                <td>{{ entry[0] }}</td>
+                <td>{{ entry[1] }}</td>
+            </tr>
+            {% endfor %}
+        </table>
+    </body>
+</html>
