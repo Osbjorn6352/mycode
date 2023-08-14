@@ -16,5 +16,5 @@ def test_astros():
         issspace.astros()
 
     assert "Network access not allowed" in str(slappysquirrel.value)
-    # here we are asserting that the slappysquirrel object created by pytest contains the string "Network access not allowed"
+    # here we are asserting that the slappysquirrel object created by pytest contains the string "Network access not allowed":wq
 
